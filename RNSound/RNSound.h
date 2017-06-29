@@ -7,5 +7,5 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface RNSound : NSObject <RCTBridgeModule, AVAudioPlayerDelegate>
-
+@property (nonatomic, strong) AVPlayer *silentPlayer;
 @end

@@ -112,6 +112,18 @@ RCT_EXPORT_METHOD(enableInSilenceMode:(BOOL)enabled) {
   [session setActive: enabled error: nil];
 }
 
+RCT_EXPORT_METHOD(enableInBackground:(BOOL)enabled) {
+  NSError *sessionError = nil;
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&sessionError];
+  // you should typically check return on setCategory and sessionError at this point
+  AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"silent" withExtension:@"mp3"]];
+  [self setSilentPlayer:[[AVPlayer alloc] initWithPlayerItem:item]];
+  // this makes sure our player keeps working after the silence ends
+  [[self silentPlayer] setActionAtItemEnd:AVPlayerActionAtItemEndNone];
+  [[self silentPlayer] play];
+}
+
+
 RCT_EXPORT_METHOD(prepare:(NSString*)fileName
                   withKey:(nonnull NSNumber*)key
                   withOptions:(NSDictionary*)options
