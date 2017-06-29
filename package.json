@@ -6,7 +6,7 @@
   "typings": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zmxv/react-native-sound.git"
+    "url": "git+https://github.com/cyrusbowman/react-native-sound.git"
   },
   "keywords": [
     "react-native",
@@ -15,6 +15,9 @@
     "audio"
   ],
   "author": "Zhen Wang <z@zmxv.com> (http://blog.zmxv.com)",
+  "contributors": [
+    "Cyrus Bowman <cyrusbow@gmail.com>"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "react-native": ">=0.8.0"

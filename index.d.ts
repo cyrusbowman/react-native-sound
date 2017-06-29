@@ -12,10 +12,10 @@ export default class Sound {
   static CACHES: string
 
   /**
-   * Sets AVAudioSession category, which allows playing sound in background, 
-   * stop sound playback when phone is locked, etc. 
+   * Sets AVAudioSession category, which allows playing sound in background,
+   * stop sound playback when phone is locked, etc.
    * Parameter options: "Ambient", "SoloAmbient", "Playback", "Record", "PlayAndRecord", "AudioProcessing", "MultiRoute".
-   * 
+   *
    * @param category AVAudioSession category
    * @param mixWithOthers Can be set to true to force mixing with other audio sessions.
    */
@@ -57,7 +57,7 @@ export default class Sound {
   release(): void
 
   /**
-   * Return the number of channels 
+   * Return the number of channels
    * (1 for mono and 2 for stereo sound), or -1 before the sound gets loaded.
    */
   getNumberOfChannels(): number
@@ -87,9 +87,9 @@ export default class Sound {
   setPan(value: number): void
 
   /**
-   * Return the loop count of the audio player. 
-   * The default is 0 which means to play the sound once. 
-   * A positive number specifies the number of times to return to the start and play again. 
+   * Return the loop count of the audio player.
+   * The default is 0 which means to play the sound once.
+   * A positive number specifies the number of times to return to the start and play again.
    * A negative number indicates an indefinite loop.
    */
   getNumberOfLoops(): number
@@ -102,33 +102,39 @@ export default class Sound {
 
   /**
    * Callback will receive the current playback position in seconds and whether the sound is being played.
-   * @param cb 
+   * @param cb
    */
   getCurrentTime(cb?: (seconds: number, isPlaying: boolean) => void): void
 
   /**
    * Seek to a particular playback point in seconds.
-   * @param value 
+   * @param value
    */
   setCurrentTime(value: number): void
 
   /**
    * Speed of the audio playback (iOS Only).
-   * @param value 
+   * @param value
    */
   setSpeed(value: number): void
 
   /**
    * Whether to enable playback in silence mode (iOS only)
    * @deprecated - Use the static method Sound.setCategory('Playback') instead which has the same effect.
-   * @param enabled 
+   * @param enabled
    */
   enableInSilenceMode(enabled: boolean): void
 
   /**
+   * Whether to enable playback when app is in background (iOS only)
+   * @param enabled
+   */
+  enableInBackground(enabled: boolean): void
+
+  /**
    * Sets AVAudioSession category
    * @deprecated
-   * @param value 
+   * @param value
    */
   setCategory(value: AVAudioSessionCategory): void
 
