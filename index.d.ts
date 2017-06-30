@@ -132,6 +132,12 @@ export default class Sound {
   enableInBackground(enabled: boolean): void
 
   /**
+   * Device volume (iOS only)
+   * @param volume
+   */
+  setDeviceVolume(volume: number): void
+
+  /**
    * Sets AVAudioSession category
    * @deprecated
    * @param value

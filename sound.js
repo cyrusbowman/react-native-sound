@@ -186,6 +186,12 @@ Sound.enableInBackground = function(enabled) {
   }
 };
 
+Sound.setDeviceVolume = function(volume) {
+  if (!IsAndroid && !IsWindows) {
+    RNSound.setDeviceVolume(volume);
+  }
+}
+
 Sound.setCategory = function(value, mixWithOthers = false) {
   if (!IsAndroid && !IsWindows) {
     RNSound.setCategory(value, mixWithOthers);

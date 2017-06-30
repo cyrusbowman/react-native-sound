@@ -123,6 +123,23 @@ RCT_EXPORT_METHOD(enableInBackground:(BOOL)enabled) {
   [[self silentPlayer] play];
 }
 
+RCT_EXPORT_METHOD(setDeviceVolume:(nonnull NSNumber*)volume) {
+    MPVolumeView* volumeView = [[MPVolumeView alloc] init];
+
+    // Get the Volume Slider
+    UISlider* volumeViewSlider = nil;
+
+    for (UIView *view in [volumeView subviews]){
+        if ([view.class.description isEqualToString:@"MPVolumeSlider"]){
+            volumeViewSlider = (UISlider*)view;
+            break;
+        }
+    }
+
+    // Set the volume
+    [volumeViewSlider setValue:volume.floatValue animated:YES];
+    [volumeViewSlider sendActionsForControlEvents:UIControlEventTouchUpInside];
+}
 
 RCT_EXPORT_METHOD(prepare:(NSString*)fileName
                   withKey:(nonnull NSNumber*)key
